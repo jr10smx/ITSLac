@@ -33,6 +33,15 @@ public interface CreditoRepository extends JpaRepository<Credito, Long>{
 			+ "    carreras.deleted  = 0 GROUP BY alumnos.nombre" ,nativeQuery = true)
 	List<ScoresRepository> all();
 	
+	@Query(value = "SELECT IF( count(credito.id) > 0 , 1, 0) as hayReg "
+			+ "FROM "
+			+ "creditos as credito "
+			+ "WHERE "
+			+ "credito.deleted   = 0;",nativeQuery = true)
+	int thereIsReg();
+		
+	
+		
 	
 	@Query(value = "SELECT "
 	+ 		"creditos.id as idCredito, creditos.idAlumno, creditos.comentarios, creditos.creditos as creditoPer, alumnos.numControl, alumnos.nombre, alumnos.estado, carreras.nombre as carrera, periodos.anio, periodos.numPeriodo, "

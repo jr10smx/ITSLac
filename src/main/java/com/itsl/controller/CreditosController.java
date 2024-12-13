@@ -36,7 +36,13 @@ public class CreditosController {
 	// Este metodo sirve para listar todos los `creditos`
 	@GetMapping("/all")
 	public List<ScoresRepository> listarTodasLosCreditos() {
-		return creditosRepository.all();		
+		List<ScoresRepository> list = null;
+		if( creditosRepository.thereIsReg() == 0 ) {
+			return list;	
+		}else {
+			return creditosRepository.all();		
+		}
+		
 	}
 	
 	// Este metodo sirve para guardar un `credito`
