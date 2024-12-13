@@ -54,7 +54,7 @@ public class SecurityConfig {
         
         configuration.setAllowCredentials(true);
         
-        configuration.setAllowedOrigins(List.of("http://localhost:4200","http://localhost"));
+        configuration.setAllowedOrigins(List.of("http://localhost:4200","http://localhost","https://itslac.web.app"));
         configuration.setAllowedMethods(List.of("POST", "PUT", "PATCH", "GET", "OPTIONS", "DELETE"));
 
         configuration.setAllowedHeaders(List.of(
