@@ -52,7 +52,7 @@ public class SecurityConfig {
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         
-        configuration.setAllowCredentials(false);
+        configuration.setAllowCredentials(true);
         
         configuration.setAllowedOrigins(List.of("http://localhost:4200","http://localhost","https://itslac.web.app","https://mellow-love-production.up.railway.app"));
         configuration.setAllowedMethods(List.of("POST", "PUT", "PATCH", "GET", "OPTIONS", "DELETE"));
@@ -66,9 +66,9 @@ public class SecurityConfig {
                 "Access-Control-Request-Headers",
                 "x-access-token"));
 
-//        configuration.setExposedHeaders(List.of(
-//                "Access-Control-Allow-Origin",
-//                "Access-Control-Allow-Credentials"));
+        configuration.setExposedHeaders(List.of(
+                "Access-Control-Allow-Origin",
+                "Access-Control-Allow-Credentials"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
