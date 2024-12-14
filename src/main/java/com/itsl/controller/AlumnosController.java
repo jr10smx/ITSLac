@@ -33,6 +33,12 @@ public class AlumnosController {
 	PasswordEncoder encoder;
 	
 	
+	// Este metodo sirve para listar todos los `alumnos` con el nombre de la carrera
+	@GetMapping("/allStudentWithCareer")
+	public List<StudentWithCareer> listarTodosLosAlumnosConCarrera() {
+		return alumnosRepository.allStudentWithCareer();		
+	}
+	
 	// Este metodo sirve para listar todos los `alumnos`
 	@GetMapping("/all")
 	public List<Alumno> listarTodosLosAlumnos() {

@@ -67,6 +67,17 @@ public interface AlumnosRepository extends JpaRepository<Alumno, Long>{
 			+ "     carreras.deleted = 0", nativeQuery = true)
 	StudentWithCareer studentWithCareer(@Param("id") Long id);
 	
+	@Query(value = 
+			  " SELECT \n"
+			+ "		alumnos.id, alumnos.nombre, alumnos.numControl, alumnos.estado, alumnos.comentarios, carreras.nombre as carrera \n"			
+			+ "	FROM \n"
+			+ "		alumnos, carreras \n"
+			+ "	WHERE \n"
+			+ "     alumnos.idCarrera = carreras.id \n"
+			+ " AND \n"
+			+ "     carreras.deleted = 0", nativeQuery = true)
+	List<StudentWithCareer> allStudentWithCareer();
+	
 	@Query(value="SELECT * FROM alumnos WHERE numControl like CONCAT('%',:numCtrl,'%') \n"
 			+ " AND \n"
 			+ " alumnos.deleted = 0", nativeQuery = true)
